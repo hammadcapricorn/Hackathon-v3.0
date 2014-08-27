@@ -18,7 +18,7 @@ angular.module('starter', ['ionic','ui.router'])
   });
 })
 
-    .controller('loginController',
+.controller('loginController',
 
     function($scope){
 
@@ -58,10 +58,10 @@ angular.module('starter', ['ionic','ui.router'])
                 templateUrl: 'views/questions.html',
                 controller : questionsController
             })
-    })
+    });
 
 
-function questionsController($scope, $http,$stateParams){
+ function questionsController($scope, $http,$stateParams){
 
      $scope.correctAnswers = 0;
      $scope.QuesionsData = $http.get('http://staging.kauhsar.com/getquestion.php')
@@ -86,7 +86,7 @@ function questionsController($scope, $http,$stateParams){
         };
     $scope.okay = function (lo) {
         if(lo == $scope.variable[$scope.mark].correct){
-            alert('this is what you want');
+
             $scope.mark++ ;
         }
     }
