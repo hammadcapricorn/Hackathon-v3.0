@@ -47,41 +47,36 @@ angular.module('starter', ['ionic','ui.router'])
 
             // HOME STATES AND NESTED VIEWS ========================================
             .state('home', {
-                url: '/',
-                templateUrl: 'views/login.html'
+                url: '/home',
+                templateUrl: 'views/login.html',
+                controller : function ($scope){}
             })
 
             //nested list with custom controller
             .state('question', {
-                url: '/questions',
+                url: '/questions/:id',
                 templateUrl: 'views/questions.html',
                 controller : questionsController
             })
     })
-    .factory('questionsFactory',function($http){
 
-        var questionsData = "";
-        $http.get('http://staging.kauhsar.com/getquestion.php').success(function(data){
-            $scope.variable = data;
-            console.log(data);
-            //questionsData = data;
-            return data;
-        })
-            .error(function(data){
-                $scope.variable = data;
-                alert('ERROR')
-            });
 
-    })
+function questionsController($scope, $http,$stateParams){
 
-function questionsController($scope, $http){
-    $http.get('http://staging.kauhsar.com/getquestion.php').success(function(data){
+        $scope.QuesionsData = $http.get('http://staging.kauhsar.com/getquestion.php').success(function(data){
         $scope.variable = data;
         console.log(data);
+        return data;
          })
         .error(function(data){
             $scope.variable = data;
             alert('ERROR')
         });
 
+        $scope.mark = $stateParams.id = 0;
+        $scope.nextQues = function (){
+
+        //alert($scope.mark);
+        $scope.mark++ ;
+        }
 };
