@@ -61,8 +61,8 @@ angular.module('starter', ['ionic','ui.router'])
 
             .state('result', {
                 url: '/result',
-                templateUrl: 'views/examList.html',
-                controller : questionsController
+                templateUrl: 'views/examList.html'
+
             })
     });
 
@@ -88,11 +88,11 @@ angular.module('starter', ['ionic','ui.router'])
 
             if($scope.choice == $scope.variable[$scope.mark].correct) {
                 $rootScope.correctAnswers++;
+                //$scope.choice = 0;
             }
-
+            document.getElementById(""+$scope.choice).checked = false;
             if($scope.mark == ($scope.variable.length-1)){ window.location.hash = "#/result";};
             $scope.mark++ ;
-            document.getElementById(""+$scope.choice).checked = false;
 
         };
 

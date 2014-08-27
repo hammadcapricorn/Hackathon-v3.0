@@ -3,7 +3,7 @@
 
 
     <div class="list padding">
-        <h4>Q{{$index+1}} :  {{variable[mark].question}}</h4>
+        <span><h4>Q{{mark+1}} :</span><span> {{variable[mark].question}}</h4></span>
         <label  class="item item-radio">
             <input type="radio" name="group" id="1" ng-click="okay(1)">
             <div class="item-content" >
@@ -32,11 +32,13 @@
             </div>
             <i class="radio-icon ion-checkmark"></i>
         </label>
+        </span>
     </div>
 </ion-content>
 <ion-footer-bar class="bar-stable">
 
     <a class="button icon-left ion-chevron-left button-clear button-dark" ng-click="preQues()">Back</a>
+    {{correctAnswers}}
     <a class="button icon-right ion-chevron-right button-calm" ng-click="nextQues()">Next  </a>
 
 </ion-footer-bar>
