@@ -89,12 +89,11 @@ angular.module('starter', ['ionic','ui.router'])
             if($scope.choice == $scope.variable[$scope.mark].correct) {
                 $rootScope.correctAnswers++;
             }
-            alert($scope.mark == ($scope.variable.length-1));
-            if($scope.mark == $scope.variable.length){ window.location.hash = "#/result";};
+
+            if($scope.mark == ($scope.variable.length-1)){ window.location.hash = "#/result";};
             $scope.mark++ ;
             document.getElementById(""+$scope.choice).checked = false;
-            //$scope.choice = 0;
-            //(function(){)();
+
         };
 
      $scope.preQues = function (){
