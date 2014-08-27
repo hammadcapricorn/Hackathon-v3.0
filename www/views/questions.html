@@ -1,0 +1,52 @@
+<ion-content class="has-header has-footer">
+
+    <!--<ul class="list">-->
+        <!--<ul class="item item-radio" >-->
+            <!--<li class="item ">-->
+                    <!--Q{{$index+1}} :  {{variable[0].question}}<br>-->
+            <!--</li>-->
+            <!--<li class="item">-->
+               <!--{{$index+1}} :  {{variable[0].opt1}} <input type="radio" name="group">-->
+            <!--</li>-->
+            <!--</ul>-->
+    <!--</ul>-->
+
+    <div class="list"><br>
+        <h3>Q{{$index+1}} :  {{variable[0].question}}</h3>
+        <label class="item item-radio">
+            <input type="radio" name="group">
+            <div class="item-content">
+                1 :  {{variable[0].opt1}} <input type="radio" name="group">
+            </div>
+            <i class="radio-icon ion-checkmark"></i>
+        </label>
+        <label class="item item-radio">
+            <input type="radio" name="group">
+            <div class="item-content">
+                2 :  {{variable[0].opt1}} <input type="radio" name="group">
+            </div>
+            <i class="radio-icon ion-checkmark"></i>
+        </label>
+        <label class="item item-radio">
+            <input type="radio" name="group">
+            <div class="item-content">
+                3 :  {{variable[0].opt1}} <input type="radio" name="group">
+            </div>
+            <i class="radio-icon ion-checkmark"></i>
+        </label>
+        <label class="item item-radio">
+            <input type="radio" name="group">
+            <div class="item-content">
+                4 :  {{variable[0].opt1}} <input type="radio" name="group">
+            </div>
+            <i class="radio-icon ion-checkmark"></i>
+        </label>
+    </div>
+</ion-content>
+<ion-footer-bar class="bar-stable">
+
+    <a class="button icon-left ion-chevron-left button-clear button-dark">Back</a>
+    <a class="button icon-right ion-chevron-right button-calm">Next  </a>
+
+</ion-footer-bar>
+
