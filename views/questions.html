@@ -4,31 +4,31 @@
 
     <div class="list"><br>
         <h3>Q{{$index+1}} :  {{variable[mark].question}}</h3>
-        <label class="item item-radio">
-            <input type="radio" name="group">
-            <div class="item-content">
-                1 :  {{variable[mark].opt1}} -- {{choice}} <input  type="radio" name="group" ng-model="choice" value="1">
-            </div>
-            <i class="radio-icon ion-checkmark"></i>
-        </label>
-        <label class="item item-radio">
-            <input type="radio" name="group">
+        <label  class="item item-radio">
+            <input type="radio" name="group" id="1" ng-click="okay(1)">
             <div class="item-content" >
-                2 :  {{variable[mark].opt2}} -- {{choice}} <input  type="radio" name="group" ng-model="choice" value="2">
+                1 :  {{variable[mark].opt1}} <input id="11" type="radio" name="group" >
             </div>
             <i class="radio-icon ion-checkmark"></i>
         </label>
         <label class="item item-radio">
-            <input type="radio" name="group">
-            <div class="item-content">
-                3 :  {{variable[mark].opt3}} -- {{choice}} <input  type="radio" name="group" ng-model="choice" value="3">
+            <input type="radio" name="group" id="2" ng-click="okay(2)">
+            <div class="item-content" >
+                2 :  {{variable[mark].opt2}}  <input id="22" type="radio" name="group" >
             </div>
             <i class="radio-icon ion-checkmark"></i>
         </label>
         <label class="item item-radio">
-            <input type="radio" name="group">
-            <div class="item-content">
-                4 :  {{variable[mark].opt4}} -- {{choice}} <input type="radio" name="group" ng-model="choice" value="4">
+            <input type="radio" name="group" id="3" ng-click="okay(3)">
+            <div class="item-content" >
+                3 :  {{variable[mark].opt3}} <input id="33" type="radio" name="group" >
+            </div>
+            <i class="radio-icon ion-checkmark"></i>
+        </label>
+        <label class="item item-radio">
+            <input type="radio" name="group" id="4" ng-click="okay(4)">
+            <div class="item-content" >
+                4 :  {{variable[mark].opt4}} <input id="44" type="radio" name="group" >
             </div>
             <i class="radio-icon ion-checkmark"></i>
         </label>

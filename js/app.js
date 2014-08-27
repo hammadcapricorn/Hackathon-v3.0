@@ -62,12 +62,13 @@ angular.module('starter', ['ionic','ui.router'])
 
 
 function questionsController($scope, $http,$stateParams){
-    $scope.choice = 1;
-    $scope.correctAnswers = 0;
-    $scope.QuesionsData = $http.get('http://staging.kauhsar.com/getquestion.php').success(function(data){
-     $scope.variable = data;
-        console.log(data);
-        return data;
+
+     $scope.correctAnswers = 0;
+     $scope.QuesionsData = $http.get('http://staging.kauhsar.com/getquestion.php')
+         .success(function(data){
+            $scope.variable = data;
+            console.log(data);
+            return data;
          })
         .error(function(data){
             $scope.variable = data;
@@ -75,25 +76,18 @@ function questionsController($scope, $http,$stateParams){
         });
 
         $scope.mark = $stateParams.id = 0;
-        $scope.nextQues = function (){
-            alert($scope.variable[$scope.mark].correct);
-            alert($scope.value);
-            alert($scope.variable[$scope.mark].correct == $scope.value);
 
-            for(var i = 1;i<=4;i++){
-            console.log(i);
-                if($scope.variable[$scope.mark].correct == $scope.value){
-                $scope.correctAnswers++;
-                alert('answer is correct');
-                break;
-                }
-            }
+        $scope.nextQues = function (){
+            $scope.mark++ ;
+        };
+
+        $scope.preQues = function (){
+        $scope.mark-- ;
+        };
+    $scope.okay = function (lo) {
+        if(lo == $scope.variable[$scope.mark].correct){
+            alert('this is what you want');
             $scope.mark++ ;
         }
-
-
-    $scope.preQues = function (){
-        $scope.mark-- ;
     }
-
 };
