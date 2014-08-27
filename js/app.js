@@ -62,9 +62,10 @@ angular.module('starter', ['ionic','ui.router'])
 
 
 function questionsController($scope, $http,$stateParams){
-
-        $scope.QuesionsData = $http.get('http://staging.kauhsar.com/getquestion.php').success(function(data){
-        $scope.variable = data;
+    $scope.choice = 1;
+    $scope.correctAnswers = 0;
+    $scope.QuesionsData = $http.get('http://staging.kauhsar.com/getquestion.php').success(function(data){
+     $scope.variable = data;
         console.log(data);
         return data;
          })
@@ -75,8 +76,24 @@ function questionsController($scope, $http,$stateParams){
 
         $scope.mark = $stateParams.id = 0;
         $scope.nextQues = function (){
+            alert($scope.variable[$scope.mark].correct);
+            alert($scope.value);
+            alert($scope.variable[$scope.mark].correct == $scope.value);
 
-        //alert($scope.mark);
-        $scope.mark++ ;
+            for(var i = 1;i<=4;i++){
+            console.log(i);
+                if($scope.variable[$scope.mark].correct == $scope.value){
+                $scope.correctAnswers++;
+                alert('answer is correct');
+                break;
+                }
+            }
+            $scope.mark++ ;
         }
+
+
+    $scope.preQues = function (){
+        $scope.mark-- ;
+    }
+
 };

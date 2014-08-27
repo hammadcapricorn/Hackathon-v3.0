@@ -7,28 +7,28 @@
         <label class="item item-radio">
             <input type="radio" name="group">
             <div class="item-content">
-                1 :  {{variable[mark].opt1}} <input type="radio" name="group">
+                1 :  {{variable[mark].opt1}} -- {{choice}} <input  type="radio" name="group" ng-model="choice" value="1">
+            </div>
+            <i class="radio-icon ion-checkmark"></i>
+        </label>
+        <label class="item item-radio">
+            <input type="radio" name="group">
+            <div class="item-content" >
+                2 :  {{variable[mark].opt2}} -- {{choice}} <input  type="radio" name="group" ng-model="choice" value="2">
             </div>
             <i class="radio-icon ion-checkmark"></i>
         </label>
         <label class="item item-radio">
             <input type="radio" name="group">
             <div class="item-content">
-                2 :  {{variable[mark].opt2}} <input type="radio" name="group">
+                3 :  {{variable[mark].opt3}} -- {{choice}} <input  type="radio" name="group" ng-model="choice" value="3">
             </div>
             <i class="radio-icon ion-checkmark"></i>
         </label>
         <label class="item item-radio">
             <input type="radio" name="group">
             <div class="item-content">
-                3 :  {{variable[mark].opt3}} <input type="radio" name="group">
-            </div>
-            <i class="radio-icon ion-checkmark"></i>
-        </label>
-        <label class="item item-radio">
-            <input type="radio" name="group">
-            <div class="item-content">
-                4 :  {{variable[mark].opt4}} <input type="radio" name="group">
+                4 :  {{variable[mark].opt4}} -- {{choice}} <input type="radio" name="group" ng-model="choice" value="4">
             </div>
             <i class="radio-icon ion-checkmark"></i>
         </label>
@@ -36,7 +36,7 @@
 </ion-content>
 <ion-footer-bar class="bar-stable">
 
-    <a class="button icon-left ion-chevron-left button-clear button-dark">Back</a>
+    <a class="button icon-left ion-chevron-left button-clear button-dark" ng-click="preQues()">Back</a>
     <a class="button icon-right ion-chevron-right button-calm" ng-click="nextQues()">Next  </a>
 
 </ion-footer-bar>
