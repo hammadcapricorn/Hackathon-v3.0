@@ -4,7 +4,7 @@
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
 angular.module('starter', ['ionic','ui.router'])
-    
+
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
@@ -58,12 +58,19 @@ angular.module('starter', ['ionic','ui.router'])
                 templateUrl: 'views/questions.html',
                 controller : questionsController
             })
+
+            .state('result', {
+                url: '/result',
+                templateUrl: 'views/examList.html',
+                controller : questionsController
+            })
     });
 
 
- function questionsController($scope, $http,$stateParams){
-
-     $scope.correctAnswers = 0;
+ function questionsController($scope, $http,$stateParams,$state,$rootScope){
+     $rootScope.correctAnswers = 0;
+     $scope.choice = 0;
+     //$scope.correctAnswers = 0;
      $scope.QuesionsData = $http.get('http://staging.kauhsar.com/getquestion.php')
          .success(function(data){
             $scope.variable = data;
@@ -78,16 +85,29 @@ angular.module('starter', ['ionic','ui.router'])
         $scope.mark = $stateParams.id = 0;
 
         $scope.nextQues = function (){
+
+            if($scope.choice == $scope.variable[$scope.mark].correct) {
+                $rootScope.correctAnswers++;
+            }
+            alert($scope.mark == ($scope.variable.length-1));
+            if($scope.mark == $scope.variable.length){ window.location.hash = "#/result";};
             $scope.mark++ ;
+            document.getElementById(""+$scope.choice).checked = false;
+            //$scope.choice = 0;
+            //(function(){)();
         };
 
-        $scope.preQues = function (){
-        $scope.mark-- ;
-        };
+     $scope.preQues = function (){
+
+            $scope.mark-- ;
+            if($scope.mark < 0){$scope.choice = 0;
+                document.getElementById(""+$scope.choice).checked = false;
+            }
+            document.getElementById(""+$scope.choice).checked = true;
+     };
     $scope.okay = function (lo) {
         if(lo == $scope.variable[$scope.mark].correct){
-
-            $scope.correctAnswers = 0;
+            $scope.choice = lo;
         }
     }
 };
