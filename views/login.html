@@ -1,18 +1,29 @@
 <ion-content class="has-header has-subheader has-footer">
 
-    <div class="list list-inset">
+    <div id="login">
+
+    <form class="list list-inset" action="http://staging.kauhsar.com/getLogin.php" method="POST">
+
+    <fieldset>
+
+    <label class="item item-input">
+        <p><input name="userid" type="text" id="" placeholder="User ID"></p>
+    </label>
         <label class="item item-input">
-            <input type="text" placeholder="User Name">
+    <p><input name="password" type="password" id="password" placeholder="Password"></p> <!-- JS because of IE support; better: placeholder="password" -->
         </label>
-        <label class="item item-input">
-            <input type="password" placeholder="Password">
-        </label>
+    <p><input class="button button-block button-positive" name="btnLogin" type="submit" value="Sign In" onclick="chkAuth()"></p>
+
+    </fieldset>
+
+    </form>
+
     </div>
-    <div class="padding">
-    <button class="button button-block button-positive">login</button>
-    <a ui-sref="question" href="#/questions0">Questions</a>
-    </div>
+
+
 </ion-content>
-<ion-footer-bar class="bar-stable">This is Footer</ion-footer-bar>
+<ion-footer-bar class="bar-stable"></ion-footer-bar>
+
+
 
 

@@ -67,7 +67,7 @@ angular.module('starter', ['ionic','ui.router'])
     });
 
 
- function questionsController($scope, $http,$stateParams,$state,$rootScope){
+ function questionsController($scope,$http,$stateParams,$rootScope){
      $rootScope.correctAnswers = 0;
      $scope.choice = 0;
      //$scope.correctAnswers = 0;
