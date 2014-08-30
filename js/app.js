@@ -3,7 +3,7 @@
 // angular.module is a global place for creating, registering and retrieving Angular modules
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
-angular.module('starter', ['ionic','ui.router'])
+angular.module('starter', ['ionic','ui.router', 'linclark.serializer'])
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
@@ -20,11 +20,28 @@ angular.module('starter', ['ionic','ui.router'])
 
 .controller('loginController',
 
-    function($scope){
+        function($scope, $http) {
+            $scope.userID = "";
+            $scope.userPass = "";
+           $scope.chkAuth = function(){
 
-    })
+        $http({
+            method: 'POST',
+            url: 'http://staging.kauhsar.com/getLogin.php',
+            data: {
+                "userid" : $scope.userID,
+                "password" : $scope.userPass
 
-    .controller('questionsController',
+            },
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded'
+            }
+        });
+    }
+        })
+
+
+.controller('questionsController',
 
     function($scope, $http){
         $http.get('http://staging.kauhsar.com/getquestion.php').success(function(data){
@@ -49,14 +66,35 @@ angular.module('starter', ['ionic','ui.router'])
             .state('home', {
                 url: '/home',
                 templateUrl: 'views/login.html',
-                controller : function ($scope){}
+                controller :
+                    function($scope, $http) {
+                        var user = document.getElementById('userid').innerText;
+                        var pass = document.getElementById('password').innerText;
+                        $scope.userID = $scope.userID;
+                        $scope.userPass = $scope.userPass;
+                        $scope.chkAuth = function(){
+                                    alert($scope.userID);
+                                    alert($scope.userPass);
+                            $http({
+                                method: 'POST',
+                                url: 'http://staging.kauhsar.com/getLogin.php',
+                                data: {
+                                    "userid" : user,
+                                    "password" : pass
+                                    },
+                                headers: {
+                                    'Content-Type': 'application/x-www-form-urlencoded'
+                                }
+                            }).success(function(data){console.log(data)});
+                        }
+                    }
             })
 
             //nested list with custom controller
             .state('question', {
                 url: '/questions/:id',
                 templateUrl: 'views/questions.html',
-                controller : questionsController
+                controller : 'questionsController'
             })
 
             .state('result', {

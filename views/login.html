@@ -2,17 +2,17 @@
 
     <div id="login">
 
-    <form class="list list-inset" action="http://staging.kauhsar.com/getLogin.php" method="POST">
-
-    <fieldset>
+    <!--<form class="list list-inset" action="http://staging.kauhsar.com/getLogin.php" method="POST">-->
+    <form>
+    <fieldset class="padding">
 
     <label class="item item-input">
-        <p><input name="userid" type="text" id="" placeholder="User ID"></p>
+        <input id="userid" type="text" placeholder="User ID" ng-model="userID">
     </label>
         <label class="item item-input">
-    <p><input name="password" type="password" id="password" placeholder="Password"></p> <!-- JS because of IE support; better: placeholder="password" -->
+    <input type="password" id="password" placeholder="Password" ng-model="userPass" > <!-- JS because of IE support; better: placeholder="password" -->
         </label>
-    <p><input class="button button-block button-positive" name="btnLogin" type="submit" value="Sign In" onclick="chkAuth()"></p>
+    <input type="button" value="Sign In" class="button button-block button-positive" ng-click="chkAuth()">
 
     </fieldset>
 
